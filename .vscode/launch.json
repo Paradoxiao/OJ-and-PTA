@@ -1,0 +1,120 @@
+{
+  "configurations": [
+    {
+      "name": "C--",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "gcc debug",
+      "program": "${cwd}/Play/out.exe",
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+    },
+    {
+      "name": "C--I",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "gcc debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        "<",
+        "${cwd}/Play/_input.txt",
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C--O",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "gcc debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        ">",
+        "${cwd}/Play/_output.txt"
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C--IO",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "gcc debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        "<",
+        "${cwd}/Play/_input.txt",
+        ">",
+        "${cwd}/Play/_output.txt"
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C++",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "g++ debug",
+      "program": "${cwd}/Play/out.exe",
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C++I",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "g++ debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        "<",
+        "${cwd}/Play/_input.txt",
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C++O",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "g++ debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        ">",
+        "${cwd}/Play/_output.txt"
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    },
+    {
+      "name": "C++IO",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "g++ debug",
+      "program": "${cwd}/Play/out.exe",
+      "args": [
+        "<",
+        "${cwd}/Play/_input.txt",
+        ">",
+        "${cwd}/Play/_output.txt"
+      ],
+      "cwd": "${fileDirname}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb"
+    }
+  ]
+}
