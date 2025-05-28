@@ -3,3 +3,4 @@ IndentWidth: 2
 AlignArrayOfStructures: Left
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: All
+ColumnLimit: 256
