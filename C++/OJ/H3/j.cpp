@@ -4,21 +4,21 @@ struct Point {
   double a, b;
 
   Point(double a, double b) : a(a), b(b) {
-    cout << /* setprecision(16) <<*/ "Point : (" << a << ", " << b << ") is created." << endl;
+    cout << "Point : (" << a << ", " << b << ") is created." << endl;
   }
   Point() : a(0), b(0) {
-    cout << /* setprecision(16) <<*/ "Point : (" << a << ", " << b << ") is created." << endl;
+    cout << "Point : (" << a << ", " << b << ") is created." << endl;
   }
   Point(double a) : a(a), b(a) {
-    cout << /* setprecision(16) <<*/ "Point : (" << a << ", " << a << ") is created." << endl;
+    cout << "Point : (" << a << ", " << a << ") is created." << endl;
   }
   Point(const Point &p) {
     a = p.a;
     b = p.b;
-    cout << /* setprecision(16) <<*/ "Point : (" << a << ", " << b << ") is copied." << endl;
+    cout << "Point : (" << a << ", " << b << ") is copied." << endl;
   }
   ~Point() {
-    cout << /* setprecision(16) <<*/ "Point : (" << a << ", " << b << ") is erased." << endl;
+    cout << "Point : (" << a << ", " << b << ") is erased." << endl;
   }
   void show() {
     cout << "Point : (" << a << ", " << b << ")" << endl;
@@ -39,13 +39,13 @@ private:
 
 public:
   Line(double x1 = 0, double y1 = 0, double x2 = 0, double y2 = 0) : p1(x1, y1), p2(x2, y2) {
-    cout << /* setprecision(16) <<*/ "Line : (" << x1 << ", " << y1 << ") to (" << x2 << ", " << y2 << ") is created." << endl;
+    cout << "Line : (" << x1 << ", " << y1 << ") to (" << x2 << ", " << y2 << ") is created." << endl;
   }
   Line(const Point &p1, const Point &p2) : p1(p1), p2(p2) {
-    cout << /* setprecision(16) <<*/ "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is created." << endl;
+    cout << "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is created." << endl;
   }
   ~Line() {
-    cout << /* setprecision(16) <<*/ "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is erased." << endl;
+    cout << "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is erased." << endl;
   }
   void readLine() {
     char _;
@@ -55,7 +55,7 @@ public:
     cout << "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ")" << endl;
   }
   Line(const Line &l) : p1(l.p1), p2(l.p2) {
-    cout << /* setprecision(16) <<*/ "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is copied." << endl;
+    cout << "Line : (" << p1.a << ", " << p1.b << ") to (" << p2.a << ", " << p2.b << ") is copied." << endl;
   }
   const Point &start() const {
     return p1;
