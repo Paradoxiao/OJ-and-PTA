@@ -24,7 +24,7 @@ public:
           cout << "+";
         if (args[i] < 0)
           cout << "-";
-        if (args[i] != 1 && args[i] != -1 || i == 4)
+        if ((args[i] != 1 && args[i] != -1) || i == 4)
           cout << (args[i] >= 0 ? args[i] : -args[i]);
         if (i < 4) {
           cout << "x";

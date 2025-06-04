@@ -39,9 +39,3 @@ int main() {
   Data d3(d);
   return 0;
 }
-/*A default object is created.
-An integer object 120 is created.
-A double object 3.14 is created.
-The double object 3.14 is erased.
-The integer object 120 is erased.
-The default object is erased.*/

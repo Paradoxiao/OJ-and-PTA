@@ -32,7 +32,7 @@ public:
           cout << "+";
         if (args[i] < 0)
           cout << "-";
-        if (args[i] != 1 && args[i] != -1 || i == n)
+        if ((args[i] != 1 && args[i] != -1) || i == n)
           cout << (args[i] >= 0 ? args[i] : -args[i]);
         if (i < n) {
           cout << "x";
