@@ -1,44 +1,45 @@
 cpp_ path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe
+  @-just run
 cpp_I path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt
+  @-just stdin
 cpp_O path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe > Play/_output.txt
-  @printf "\n\n" >> Play/_output.txt
-  @printf "\n\n" >> Play/__io.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/_output.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/__io.txt
-  @-diff Play/_output.txt Play/__io.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty kitten diff Play/_output.txt Play/__io.txt
+  @-just stdout
+  @-just diff
 cpp_IO path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt > Play/_output.txt
-  @printf "\n\n" >> Play/_output.txt
-  @printf "\n\n" >> Play/__io.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/_output.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/__io.txt
-  @-diff Play/_output.txt Play/__io.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty kitten diff Play/_output.txt Play/__io.txt
+  @-just stdio
+  @-just diff
 c_ path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe
+  @-just run
 c_I path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" cat Play/_input.txt | Play/out.exe
+  @-just stdin
 c_O path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe > Play/_output.txt
-  @printf "\n\n" >> Play/_output.txt
-  @printf "\n\n" >> Play/__io.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/_output.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/__io.txt
-  @-diff Play/_output.txt Play/__io.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty kitten diff Play/_output.txt Play/__io.txt
+  @-just stdout
+  @-just diff
 c_IO path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @command time -f "\nmemory: %M KiB\ntime  : %e s" cat Play/_input.txt | Play/out.exe > Play/_output.txt
+  @-just stdio
+  @-just diff
+run:
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe
+stdin:splitio
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt
+stdout:splitio
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe > Play/output.txt
+stdio:splitio
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt > Play/output.txt
+splitio:
+  @awk '/Sample Input/{flag=1;next}/Sample Output/{flag=0} flag' Play/__io.txt > Play/_input.txt
+  @awk '/Sample Output/{flag=1;next} flag' Play/__io.txt > Play/_output.txt
+diff:
+  @printf "\n\n" >> Play/output.txt
   @printf "\n\n" >> Play/_output.txt
-  @printf "\n\n" >> Play/__io.txt
+  @sed -i ':a;$!{N;ba};s/\n*$//' Play/output.txt
   @sed -i ':a;$!{N;ba};s/\n*$//' Play/_output.txt
-  @sed -i ':a;$!{N;ba};s/\n*$//' Play/__io.txt
-  @-diff Play/_output.txt Play/__io.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty kitten diff Play/_output.txt Play/__io.txt
+  @-diff Play/output.txt Play/_output.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty --app-id __floating__ kitten diff Play/output.txt Play/_output.txt
