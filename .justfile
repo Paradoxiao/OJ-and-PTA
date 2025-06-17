@@ -36,10 +36,17 @@ stdio:splitio
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt > Play/output.txt
 splitio:
   @awk '/Sample Input/{flag=1;next}/Sample Output/{flag=0} flag' Play/__io.txt > Play/_input.txt
-  @awk '/Sample Output/{flag=1;next} flag' Play/__io.txt > Play/_output.txt
+  @awk '/Sample Output/{flag=1;next}/HINT/{flag=0} flag' Play/__io.txt > Play/_output.txt
 diff:
   @printf "\n\n" >> Play/output.txt
   @printf "\n\n" >> Play/_output.txt
   @sed -i ':a;$!{N;ba};s/\n*$//' Play/output.txt
   @sed -i ':a;$!{N;ba};s/\n*$//' Play/_output.txt
   @-diff Play/output.txt Play/_output.txt --minimal --color=always && echo -e "\e[32m---------\e[0m" || kitty --app-id __floating__ kitten diff Play/output.txt Play/_output.txt
+code path file:
+  @echo "" > Play/__io.txt
+  @nvim Play/__io.txt
+  @awk '/int main()/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
+  @printf "/*\n\n" >> {{path}}/{{file}}.cpp
+  @awk '/Description/{flag=1}/Append Code/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
+  @printf "*/" >> {{path}}/{{file}}.cpp
