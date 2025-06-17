@@ -39,13 +39,19 @@ public:
       }
     cout << endl;
   }
+  // NOTE: 霍纳法则求解
+  // x^4 + 2*x^3 + 3*x^2 + 4*x + 5 = (((((0)*x+1)*x+2)*x+3)*x+4)*x+5
   double getValue(double x) {
-    double sum = args[n], power = x;
-    for (int i = n - 1; i >= 0; i--) {
-      sum += power * args[i];
-      power *= x;
-    }
-    return sum;
+    // double sum = args[n], power = x;
+    // for (int i = n - 1; i >= 0; i--) {
+    //   sum += power * args[i];
+    //   power *= x;
+    // }
+    // return sum;
+    double result = 0;
+    for (int i = 0; i <= n; i++)
+      result = (result * x) + args[i];
+    return result;
   }
 };
 int main() {
