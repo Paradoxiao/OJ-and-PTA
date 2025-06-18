@@ -3,40 +3,43 @@ cpp_ path file:
   @-just run
 cpp_I path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @-just stdin
+  @-just stdin {{path}} {{file}}
 cpp_O path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @-just stdout
+  @-just stdout {{path}} {{file}}
   @-just diff
 cpp_IO path file:
   @g++ --std=c++23 {{path}}/{{file}}.cpp -o Play/out.exe
-  @-just stdio
+  @-just stdio {{path}} {{file}}
   @-just diff
 c_ path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
   @-just run
 c_I path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @-just stdin
+  @-just stdin {{path}} {{file}}
 c_O path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @-just stdout
+  @-just stdout {{path}} {{file}}
   @-just diff
 c_IO path file:
   @gcc --std=c23 {{path}}/{{file}}.c -o Play/out.exe
-  @-just stdio
+  @-just stdio {{path}} {{file}}
   @-just diff
 run:
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe
-stdin:splitio
+stdin path file:
+  @just splitio {{path}} {{file}}
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt
-stdout:splitio
+stdout path file:
+  @just splitio {{path}} {{file}}
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe > Play/output.txt
-stdio:splitio
+stdio path file:
+  @just splitio {{path}} {{file}}
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt > Play/output.txt
-splitio:
-  @awk '/Sample Input/{flag=1;next}/Sample Output/{flag=0} flag' Play/__io.txt > Play/_input.txt
-  @awk '/Sample Output/{flag=1;next}/HINT/{flag=0} flag' Play/__io.txt > Play/_output.txt
+splitio path file:
+  @awk '/Sample Input/{flag=1;next}/Sample Output/{flag=0} flag' {{path}}/{{file}}.cpp > Play/_input.txt
+  @awk '/Sample Output/{flag=1;next}/HINT/{flag=0} flag' {{path}}/{{file}}.cpp > Play/_output.txt
 diff:
   @printf "\n\n" >> Play/output.txt
   @printf "\n\n" >> Play/_output.txt
