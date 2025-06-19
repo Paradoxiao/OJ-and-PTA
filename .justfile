@@ -51,5 +51,5 @@ code path file:
   @nvim Play/__io.txt
   @awk '/int main()/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
   @printf "/*\n\n" >> {{path}}/{{file}}.cpp
-  @awk '/Description/{flag=1}/Append Code/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
+  @awk '/Description/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
   @printf "*/" >> {{path}}/{{file}}.cpp
