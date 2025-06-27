@@ -53,3 +53,9 @@ code path file:
   @printf "/*\n\n" >> {{path}}/{{file}}.cpp
   @awk '/Description/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
   @printf "*/" >> {{path}}/{{file}}.cpp
+neocode path file:
+  @-cliphist list | head -n 1 | cliphist decode > Play/__io.txt && cliphist list | head -n 1 | cliphist delete && cliphist list | head -n 1 | cliphist decode >> Play/__io.txt && cliphist list | head -n 1 | cliphist delete
+  @awk '/int main()/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
+  @printf "/*\n\n" >> {{path}}/{{file}}.cpp
+  @awk '/Description/{flag=1}/한국어<   中文  فارسی  English  ไทย/{flag=0} flag' Play/__io.txt >> {{path}}/{{file}}.cpp
+  @printf "*/" >> {{path}}/{{file}}.cpp
