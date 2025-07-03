@@ -5,3 +5,4 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: All
 ColumnLimit: 256
 Standard: c++03
+BreakTemplateDeclarations: Yes
