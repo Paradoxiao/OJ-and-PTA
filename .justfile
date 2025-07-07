@@ -28,6 +28,12 @@ c_IO path file:
   @-just diff
 run:
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe
+run_I:
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt
+run_O:
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe > Play/output.txt
+run_IO:
+  @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt > Play/output.txt
 stdin path file:
   @just splitio {{path}} {{file}}
   @command time -f "\nmemory: %M KiB\ntime  : %e s" Play/out.exe < Play/_input.txt
